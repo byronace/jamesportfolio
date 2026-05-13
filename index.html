@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James L. Enciso — Educator & Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F3EE;
+    --warm-white: #FDFAF6;
+    --deep-forest: #1A2E1A;
+    --moss: #3D5A3E;
+    --sage: #7A9E7E;
+    --gold: #C9A84C;
+    --gold-light: #E8CD82;
+    --terracotta: #C46E4B;
+    --ink: #1C1C1C;
+    --text-muted: #6B6B6B;
+    --border: rgba(26,46,26,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(232,205,130,0.12) 0%, transparent 24%),
+      radial-gradient(circle at 85% 15%, rgba(61,90,62,0.24) 0%, transparent 22%),
+      linear-gradient(180deg, #050505 0%, #111111 38%, #0a0a0a 100%);
+    color: #f6f2ea;
+    overflow-x: hidden;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  body { cursor: none; }
+  .cursor {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  }
+  .cursor-ring {
+    position: fixed; width: 34px; height: 34px;
+    border: 1.5px solid var(--moss); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: transform 0.18s ease, width 0.3s, height 0.3s;
+  }
+  a:hover ~ .cursor, button:hover ~ .cursor { width: 18px; height: 18px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 100;
+    width: min(1200px, calc(100% - 2rem));
+    padding: 1rem 1.4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,10,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    transition: background 0.4s, padding 0.4s, width 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,0.82);
+    width: min(1160px, calc(100% - 2rem));
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--cream); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(246,242,234,0.78); text-decoration: none; font-weight: 500;
+    position: relative; padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.35s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 2rem); position: relative;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    overflow: hidden; border-radius: 32px;
+    margin: 5.5rem auto 0; width: min(1200px, calc(100% - 2rem));
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  }
+  .hero-left {
+    background:
+      radial-gradient(circle at top left, rgba(232,205,130,0.14) 0%, transparent 32%),
+      linear-gradient(160deg, #121212 0%, #050505 100%);
+    padding: 10rem 5rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem; font-weight: 500;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeUp 0.9s 0.3s forwards;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--cream); margin-bottom: 0.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--gold-light); display: block;
+  }
+  .hero-tagline {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem; color: rgba(247,243,238,0.55);
+    font-style: italic; margin-top: 1.5rem; line-height: 1.7;
+    max-width: 360px;
+    opacity: 0; animation: fadeUp 0.9s 0.7s forwards;
+  }
+  .hero-cta {
+    margin-top: 3.5rem; display: flex; gap: 1.2rem;
+    opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+  }
+  .btn {
+    padding: 0.8rem 2rem; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: all 0.3s ease; display: inline-block;
+    cursor: none;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--deep-forest);
+    border: 1.5px solid var(--gold);
+  }
+  .btn-primary:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: var(--cream);
+    border: 1.5px solid rgba(247,243,238,0.3);
+  }
+  .btn-ghost:hover { border-color: var(--cream); }
+
+  .hero-right {
+    background:
+      radial-gradient(circle at 70% 30%, rgba(122,158,126,0.15) 0%, transparent 48%),
+      linear-gradient(180deg, #171717 0%, #101010 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-graphic {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(122,158,126,0.18) 0%, transparent 50%),
+      radial-gradient(circle at 30% 70%, rgba(201,168,76,0.10) 0%, transparent 50%);
+  }
+  .hero-portrait-wrap {
+    position: relative; z-index: 1;
+    width: 340px; height: 420px;
+    opacity: 0; animation: fadeIn 1.2s 0.6s forwards;
+  }
+  .hero-portrait-frame {
+    width: 100%; height: 100%;
+    border: none;
+    border-radius: 20px 100px 20px 100px;
+    box-shadow: -15px 15px 0px var(--moss), 0 20px 40px rgba(0,0,0,0.1);
+    position: relative; overflow: hidden;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hero-portrait-frame:hover {
+    transform: translateY(-10px);
+    box-shadow: -20px 20px 0px var(--gold), 0 30px 50px rgba(0,0,0,0.15);
+  }
+  .portrait-placeholder {
+    text-align: center; padding: 2rem;
+  }
+  .portrait-icon {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--moss), var(--sage));
+    margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .portrait-placeholder p {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;
+  }
+  .hero-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .hero-badge span {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem;
+    font-weight: 600; color: var(--deep-forest); line-height: 1.3;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    opacity: 0; animation: fadeIn 1s 1.4s forwards;
+    grid-column: 1 / -1;
+    pointer-events: none;
+  }
+  .scroll-line {
+    width: 1px; height: 50px; background: linear-gradient(to bottom, var(--moss), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  .scroll-text { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+
+  /* ── SECTIONS COMMON ── */
+  .page-shell { padding: 1rem 0 2rem; }
+  section {
+    padding: 6rem 0;
+    width: min(1200px, calc(100% - 2rem));
+    margin: 1rem auto;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+  }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 3rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.15; color: var(--deep-forest);
+  }
+  .section-title em { font-style: italic; color: var(--moss); }
+
+  /* ── ABOUT ── */
+  #about { background: linear-gradient(180deg, #141414 0%, #0f0f0f 100%); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 6rem; align-items: start; margin-top: 4rem;
+  }
+  .about-sidebar { position: sticky; top: 8rem; }
+  .about-photo-wrap {
+    position: relative; height: 400px;
+    background: transparent;
+    border-radius: 100px 20px 100px 20px;
+    box-shadow: 15px -15px 0px var(--gold-light), 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden; margin-bottom: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .about-photo-wrap:hover {
+    transform: translateY(-10px);
+    box-shadow: 20px -20px 0px var(--moss), 0 30px 50px rgba(0,0,0,0.15);
+  }
+  .about-photo-wrap::after {
+    display: none;
+  }
+  .about-photo-placeholder {
+    text-align: center;
+  }
+  .about-photo-placeholder .icon {
+    font-size: 3rem; display: block; margin-bottom: 0.8rem;
+  }
+  .about-photo-placeholder p {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--text-muted); font-size: 0.9rem;
+  }
+  .about-stat {
+    display: flex; gap: 2rem; margin-top: 1.5rem;
+  }
+  .stat-item { text-align: center; flex: 1; }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-size: 2.5rem;
+    font-weight: 600; color: var(--deep-forest); line-height: 1;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 0.3rem; }
+
+  .about-content p {
+    font-size: 1.05rem; line-height: 1.85; color: rgba(246,242,234,0.78); margin-bottom: 1.5rem;
+  }
+  .about-content p:first-child {
+    font-family: 'Fraunces', serif; font-size: 1.35rem;
+    font-style: italic; color: var(--cream); font-weight: 300;
+  }
+  .about-values {
+    margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .value-tag {
+    padding: 0.7rem 1.2rem; border: 1px solid var(--border);
+    font-size: 0.8rem; color: var(--moss); letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 0.6rem;
+    transition: all 0.3s;
+  }
+  .value-tag:hover { background: var(--moss); color: white; border-color: var(--moss); }
+  .value-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ── EDUCATION ── */
+  #education { background: linear-gradient(180deg, #0f1011 0%, #111111 100%); position: relative; overflow: hidden; }
+  #education::before {
+    content: 'EDUCATION';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-family: 'Fraunces', serif; font-size: 18vw; font-weight: 700;
+    color: rgba(255,255,255,0.03); white-space: nowrap; pointer-events: none;
+    letter-spacing: -0.04em;
+  }
+  #education .section-title { color: var(--cream); }
+  #education .section-label { color: var(--gold); }
+
+  .edu-timeline { margin-top: 5rem; position: relative; }
+  .edu-timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 1px; background: rgba(201,168,76,0.25); transform: translateX(-50%);
+  }
+  .edu-item {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 0;
+    position: relative;
+  }
+  .edu-item:nth-child(odd) .edu-card { grid-column: 1; padding-right: 4rem; text-align: right; }
+  .edu-item:nth-child(even) .edu-card { grid-column: 2; padding-left: 4rem; }
+  .edu-item:nth-child(even) { direction: rtl; }
+  .edu-item:nth-child(even) .edu-card { direction: ltr; }
+
+  .edu-card {
+    padding: 3rem 4rem 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .edu-card::before {
+    content: ''; position: absolute; top: 3.5rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 2px solid var(--gold); background: var(--deep-forest);
+    transition: background 0.3s;
+  }
+  .edu-item:nth-child(odd) .edu-card::before { right: -6px; }
+  .edu-item:nth-child(even) .edu-card::before { left: -6px; }
+  .edu-card:hover::before { background: var(--gold); }
+
+  .edu-level {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.7rem;
+  }
+  .edu-school {
+    font-family: 'Fraunces', serif; font-size: 1.6rem;
+    color: var(--cream); font-weight: 300; line-height: 1.25;
+  }
+  .edu-detail { font-size: 0.82rem; color: rgba(247,243,238,0.4); margin-top: 0.5rem; }
+
+  /* ── SKILLS ── */
+  #skills { background: linear-gradient(180deg, #181818 0%, #111111 100%); }
+  #skills .section-title { color: var(--cream); }
+  #skills .section-title em { color: var(--gold-light); }
+  #skills .section-label { color: var(--gold-light); }
+  .skills-layout { margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skills-group-title {
+    font-family: 'Fraunces', serif; font-size: 1.4rem;
+    color: var(--cream); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .skills-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .skill-item { margin-bottom: 1.2rem; }
+  .skill-name {
+    font-size: 0.95rem; letter-spacing: 0.04em; color: rgba(247,243,238,0.92);
+    margin-bottom: 0.7rem; display: flex; justify-content: space-between;
+    font-weight: 500;
+  }
+  .skill-name span { color: inherit; }
+  .skill-bar { height: 2px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+  .skill-fill {
+    height: 100%; background: linear-gradient(90deg, var(--moss), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.19,1,0.22,1);
+  }
+  .skill-fill.animated { transform: scaleX(1); }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .skill-tag {
+    padding: 0.55rem 1rem; font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.14); color: rgba(247,243,238,0.9);
+    letter-spacing: 0.06em; transition: all 0.3s;
+    background: rgba(255,255,255,0.03);
+  }
+  .skill-tag:hover { background: rgba(232,205,130,0.14); color: var(--cream); border-color: rgba(232,205,130,0.42); }
+
+  /* ── JOURNEY / GALLERY ── */
+  #journey { background: linear-gradient(180deg, #0f0f0f 0%, #121212 100%); }
+  .journey-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+  
+  /* Gallery Cover */
+  .gallery-cover {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: none;
+    width: 100%;
+    max-width: 450px;
+    height: 600px;
+    margin: 0 auto;
+    background: #000;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+  }
+  .gallery-cover img {
+    width: 100%; height: 100%; object-fit: contain; object-position: center;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .gallery-cover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(26,46,26,0.2); }
+  .gallery-cover:hover img { transform: scale(1.05); }
+  
+  .gallery-cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,46,26,0.9) 0%, rgba(26,46,26,0.1) 60%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding: 3.5rem; text-align: center;
+  }
+  .gallery-cover-title {
+    color: var(--cream); font-family: 'Fraunces', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 0.5rem;
+    transform: translateY(15px); transition: transform 0.5s ease;
+  }
+  .gallery-cover-subtitle {
+    color: var(--gold); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    transform: translateY(15px); transition: transform 0.5s ease; opacity: 0;
+  }
+  .gallery-cover:hover .gallery-cover-title, .gallery-cover:hover .gallery-cover-subtitle {
+    transform: translateY(0); opacity: 1;
+  }
+
+  /* Gallery Modal */
+  .modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    overflow-y: auto; overflow-x: hidden; background-color: rgba(26,46,26,0.96);
+    backdrop-filter: blur(10px); opacity: 0; transition: opacity 0.4s ease;
+  }
+  .modal.show { display: block; opacity: 1; }
+  .modal-content { margin: 5rem auto; width: 90%; max-width: 1200px; padding: 0; cursor: default; }
+  
+  .close-modal {
+    position: fixed; top: 25px; right: 45px; color: var(--gold); font-size: 45px; font-weight: 300;
+    cursor: none; z-index: 1001; transition: color 0.3s, transform 0.3s;
+  }
+  .close-modal:hover { color: var(--cream); transform: scale(1.1); }
+
+  /* Masonry Inside Modal */
+  .gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 1.5rem;
+    grid-auto-flow: dense;
+  }
+  .gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+  }
+  .gallery-item img, .gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .gallery-item.span-col-2 { grid-column: span 2; }
+  .gallery-item.span-row-2 { grid-row: span 2; }
+  
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; /* Let video controls be clickable behind the overlay */
+    background: linear-gradient(to top, rgba(26,46,26,0.85) 0%, rgba(26,46,26,0.2) 50%, transparent 100%);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    transition: opacity 0.5s ease;
+  }
+  .gallery-overlay-text {
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(26,46,26,0.2);
+    z-index: 10;
+  }
+  .gallery-item:hover img, .gallery-item:hover video {
+    transform: scale(1.08);
+  }
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  .gallery-item:hover .gallery-overlay-text {
+    transform: translateY(0);
+  }
+
+  /* ── OUTPUTS ── */
+  #outputs { background: linear-gradient(180deg, #151515 0%, #101010 100%); }
+  .outputs-intro { font-size: 1.05rem; color: rgba(246,242,234,0.72); max-width: 560px; margin-top: 1rem; line-height: 1.7; }
+  .outputs-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+    margin-top: 4rem;
+  }
+  .output-card {
+    border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem;
+    position: relative; overflow: hidden; transition: all 0.4s;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+  }
+  .output-card:hover { border-color: rgba(232,205,130,0.55); transform: translateY(-6px); }
+  .output-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--moss), var(--gold));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+  }
+  .output-card:hover::before { transform: scaleX(1); }
+  .output-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
+  .output-title {
+    font-family: 'Fraunces', serif; font-size: 1.5rem;
+    color: var(--cream); margin-bottom: 0.7rem;
+  }
+  .output-desc { font-size: 0.87rem; color: rgba(246,242,234,0.72); line-height: 1.7; }
+  .output-link {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    margin-top: 1.4rem; padding: 0.7rem 1rem;
+    border-radius: 999px; border: 1px solid rgba(232,205,130,0.28);
+    color: var(--cream); text-decoration: none; font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(232,205,130,0.06);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+  .output-link:hover {
+    transform: translateY(-2px);
+    background: rgba(232,205,130,0.14);
+    border-color: rgba(232,205,130,0.5);
+  }
+  .contact-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(232,205,130,0.12) 0%, transparent 35%);
+    pointer-events: none;
+  }
+  .contact-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.9rem;
+  }
+  .contact-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .contact-copy {
+    color: rgba(246,242,234,0.74);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-item:first-of-type { border-top: 0; padding-top: 0; }
+  .contact-item span {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.45);
+  }
+  .contact-item a,
+  .contact-item strong {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .contact-item a:hover {
+    color: var(--gold-light);
+  }
+  .output-count {
+    position: absolute; top: 2rem; right: 2rem;
+    font-family: 'Fraunces', serif; font-size: 3rem;
+    color: rgba(255,255,255,0.08); font-weight: 700; line-height: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: linear-gradient(180deg, #0b0b0b 0%, #050505 100%); padding: 5rem 0 3rem;
+    text-align: center; position: relative; overflow: hidden;
+    width: min(1200px, calc(100% - 2rem));
+    margin: 1rem auto 2rem;
+    border-radius: 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+  }
+  footer::before {
+    content: 'JLE';
+    position: absolute; bottom: -2rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Fraunces', serif; font-size: 20vw; font-weight: 700;
+    color: rgba(255,255,255,0.03); letter-spacing: -0.05em; pointer-events: none;
+    white-space: nowrap;
+  }
+  .footer-name {
+    font-family: 'Fraunces', serif; font-size: 2.5rem;
+    color: var(--cream); font-weight: 300; margin-bottom: 0.5rem;
+  }
+  .footer-tagline {
+    font-size: 0.8rem; color: rgba(247,243,238,0.4); letter-spacing: 0.1em; margin-bottom: 3rem;
+  }
+  .footer-divider { width: 60px; height: 1px; background: var(--gold); margin: 2rem auto; }
+  .footer-credit { font-size: 0.75rem; color: rgba(247,243,238,0.25); letter-spacing: 0.1em; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+    50%       { opacity: 1;   transform: scaleY(1); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.35s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { top: 0.75rem; width: calc(100% - 1rem); border-radius: 24px; padding: 0.9rem 1rem; }
+    .nav-links { gap: 1rem; overflow-x: auto; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .hero { grid-template-columns: 1fr; width: calc(100% - 1rem); margin-top: 4.8rem; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 7rem 2rem 4.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-sidebar { position: static; }
+    .edu-timeline::before { left: 0; }
+    .edu-item { grid-template-columns: 1fr; direction: ltr !important; }
+    .edu-item .edu-card, .edu-item:nth-child(even) .edu-card {
+      grid-column: 1; padding: 2rem 1rem 2rem 2rem; text-align: left;
+    }
+    .edu-card::before { left: -6px !important; right: auto !important; }
+    .edu-timeline { padding-left: 2rem; }
+    .skills-layout, .outputs-cards { grid-template-columns: 1fr; }
+    .gallery-masonry { grid-template-columns: 1fr; grid-auto-rows: 300px; }
+    .gallery-item.span-col-2 { grid-column: span 1; }
+    .gallery-item.span-row-2 { grid-row: span 1; }
+    section { width: calc(100% - 1rem); border-radius: 24px; padding: 4.5rem 0; }
+    .container { padding: 0 1.25rem; }
+    footer { width: calc(100% - 1rem); border-radius: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">James L. Enciso</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#outputs">Outputs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="page-shell">
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">E-Portfolio 2025</p>
+    <h1 class="hero-name">James L.<br><em>Enciso</em></h1>
+    <p class="hero-tagline">"Empowering Learning Through Leadership, Innovation, and Service"</p>
+    <div class="hero-cta">
+      <a href="#about" class="btn btn-primary">Explore My Journey</a>
+      <a href="#outputs" class="btn btn-ghost">View Outputs</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic"></div>
+    <div class="hero-portrait-wrap">
+      <div class="hero-portrait-frame">
+        <img src="PROFILE.png" alt="James L. Enciso Portrait" style="width:100%; height:100%; object-fit:contain;">
+      </div>
+      <div class="hero-badge">
+        <span>BTLED<br>Home<br>Econ.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <p class="section-label reveal">About Me</p>
+    <h2 class="section-title reveal reveal-delay-1">Educator. <em>Leader.</em><br>Lifelong Learner.</h2>
+    <div class="about-grid">
+      <div class="about-sidebar reveal">
+        <div class="about-photo-wrap">
+          <img src="secondprofile.png" alt="James L. Enciso Photo" style="width:100%; height:100%; object-fit:contain;">
+        </div>
+        <div class="about-stat">
+          <div class="stat-item">
+            <div class="stat-num">BTLED</div>
+            <div class="stat-label">Major</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">CTU</div>
+            <div class="stat-label">University</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">HE</div>
+            <div class="stat-label">Specialization</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="reveal reveal-delay-1">Welcome to my e-portfolio! I am a Bachelor of Technology and Livelihood Education major in Home Economics, passionate about shaping meaningful learning experiences and leading impactful initiatives.</p>
+        <p class="reveal reveal-delay-2">I am a dedicated and goal-driven educator-in-training with a strong commitment to excellence in teaching, leadership, and service. Currently pursuing my degree in BTLED major in Home Economics, I aim to equip learners with practical skills and values that are relevant in today's dynamic world.</p>
+        <p class="reveal reveal-delay-3">As a student leader, I have actively contributed to organizing programs, leading initiatives, and fostering collaboration among peers. My experiences have strengthened my ability to communicate effectively, think critically, and lead with purpose.</p>
+        <div class="about-values reveal">
+          <div class="value-tag"><span class="value-dot"></span>Excellence in Teaching</div>
+          <div class="value-tag"><span class="value-dot"></span>Servant Leadership</div>
+          <div class="value-tag"><span class="value-dot"></span>Community Engagement</div>
+          <div class="value-tag"><span class="value-dot"></span>Lifelong Learning</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">Educational Background</p>
+    <h2 class="section-title reveal reveal-delay-1">The Path of<br><em>Knowledge</em></h2>
+    <div class="edu-timeline">
+
+      <div class="edu-item reveal">
+        <div class="edu-card">
+          <div class="edu-level">Elementary</div>
+          <div class="edu-school">Alpaco Elementary School</div>
+          <div class="edu-detail">Foundation of Excellence</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal reveal-delay-1">
+        <div class="edu-card">
+          <div class="edu-level">Secondary</div>
+          <div class="edu-school">Alpaco National High School</div>
+          <div class="edu-detail">Building Character & Knowledge</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal reveal-delay-2">
+        <div class="edu-card">
+          <div class="edu-level">Tertiary</div>
+          <div class="edu-school">Cebu Technological University<br>Naga Extension Campus</div>
+          <div class="edu-detail">BTLED — Home Economics · Present</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Skills & Competencies</p>
+    <h2 class="section-title reveal reveal-delay-1">What I Bring<br>to the <em>Table</em></h2>
+    <div class="skills-layout">
+      <div class="skills-group reveal reveal-delay-1">
+        <div class="skills-group-title">Teaching & Education</div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Lesson Planning</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Classroom Management</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Home Economics Instruction</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.95"></div></div>
+        </div>
+
+        <div class="skills-group-title" style="margin-top:2.5rem">Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Project Management</span>
+          <span class="skill-tag">Public Speaking</span>
+          <span class="skill-tag">Event Organization</span>
+          <span class="skill-tag">Team Collaboration</span>
+          <span class="skill-tag">Strategic Planning</span>
+          <span class="skill-tag">Peer Mentoring</span>
+        </div>
+      </div>
+
+      <div class="skills-group reveal reveal-delay-2">
+        <div class="skills-group-title">Technical Skills</div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Microsoft Office & Google Workspace</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Canva & Presentation Design</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.87"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Research & Data Analysis</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div>
+        </div>
+
+        <div class="skills-group-title" style="margin-top:2.5rem">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Critical Thinking</span>
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Empathy</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journey / Teaching Internship -->
+<section id="journey">
+  <div class="container">
+    <div class="journey-header">
+      <div>
+        <p class="section-label reveal">Photo Gallery</p>
+        <h2 class="section-title reveal reveal-delay-1">Teaching Internship<br><em>Journey</em></h2>
+      </div>
+    </div>
+    
+    <!-- Single Cover Photo -->
+    <div class="gallery-cover reveal reveal-delay-2" onclick="openGallery()">
+      <img src="for teaching intership/coverphoto.png" alt="Teaching Internship Cover">
+      <div class="gallery-cover-overlay">
+        <span class="gallery-cover-title">View Internship Gallery</span>
+        <span class="gallery-cover-subtitle">Click to view 9 photos</span>
+      </div>
+    </div>
+
+    <!-- Hidden Modal for Full Gallery -->
+    <div id="gallery-modal" class="modal">
+      <span class="close-modal" onclick="closeGallery()">&times;</span>
+      <div class="modal-content">
+        <div class="gallery-masonry">
+          <div class="gallery-item">
+            <img src="for teaching intership/internshipphoto1.png" alt="Teaching Internship 1">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Classroom Observer</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="for teaching intership/internshipphoto2.png" alt="Teaching Internship 2">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Student Engagement</span>
+            </div>
+          </div>
+          <div class="gallery-item span-row-2">
+            <img src="for teaching intership/internshipphoto3.png" alt="Teaching Internship 3">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Presentation Day</span>
+            </div>
+          </div>
+          <div class="gallery-item span-col-2">
+            <img src="for teaching intership/internshipphoto4.png" alt="Teaching Internship 4">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Faculty Collaboration</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="for teaching intership/internshipphoto5.png" alt="Teaching Internship 5">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Mentoring</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="for teaching intership/internshipphoto6.png" alt="Teaching Internship 6">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Exam Proctoring</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="for teaching intership/internshipphoto7.png" alt="Teaching Internship 7">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Activity Facilitation</span>
+            </div>
+          </div>
+          <div class="gallery-item span-col-2">
+            <img src="for teaching intership/internshipphoto8.png" alt="Teaching Internship 8">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Peer Review</span>
+            </div>
+          </div>
+          <div class="gallery-item span-row-2">
+            <img src="for teaching intership/internshipphoto9 (2).png" alt="Teaching Internship 9">
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Internship Group</span>
+            </div>
+          </div>
+          <!-- Video Section start here -->
+          <div class="gallery-item span-col-2">
+            <video src="for teaching intership/internshipvideo1.mp4" controls playsinline muted></video>
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Teaching Demonstration</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <video src="for teaching intership/internshipvideo2.mp4" controls playsinline muted></video>
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Class Participation</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <video src="for teaching intership/internshipvideo3.mp4" controls playsinline muted></video>
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Student Interaction</span>
+            </div>
+          </div>
+          <div class="gallery-item span-row-2">
+            <video src="for teaching intership/internshipvideo5.mp4" controls playsinline muted></video>
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Activity Supervision</span>
+            </div>
+          </div>
+          <div class="gallery-item span-col-2">
+            <video src="for teaching intership/internshipvideo6.mp4" controls playsinline muted></video>
+            <div class="gallery-overlay">
+              <span class="gallery-overlay-text">Final Remarks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Student Outputs -->
+<section id="outputs">
+  <div class="container">
+    <p class="section-label reveal">Student Work</p>
+    <h2 class="section-title reveal reveal-delay-1">My <em>Outputs</em> &<br>Contributions</h2>
+    <p class="outputs-intro reveal reveal-delay-2">A curated showcase of my academic work, demonstrating dedication, creativity, and professional growth as an educator-in-training.</p>
+    <div class="outputs-cards">
+      <div class="output-card reveal reveal-delay-1">
+        <span class="output-count">01</span>
+        <span class="output-icon">📝</span>
+        <div class="output-title">Lesson Plans</div>
+        <div class="output-desc">Carefully crafted lesson plans aligned with K-12 curriculum frameworks, incorporating differentiated instruction and learner-centered approaches in Home Economics.</div>
+      </div>
+      <div class="output-card reveal reveal-delay-2">
+        <span class="output-count">02</span>
+        <span class="output-icon">👨‍🏫</span>
+        <div class="output-title">Teaching Internship</div>
+        <div class="output-desc">Hands-on classroom experience during field study and student teaching, applying theoretical knowledge to real-world educational settings with diverse learners.</div>
+      </div>
+      <div class="output-card reveal reveal-delay-1">
+        <span class="output-count">03</span>
+        <span class="output-icon">📂</span>
+        <div class="output-title">Student Outputs</div>
+        <div class="output-desc">A portfolio of academic projects, reflective journals, and creative outputs that demonstrate growth and mastery of Home Economics competencies throughout the program.</div>
+        <a class="output-link" href="https://drive.google.com/drive/folders/1vvsyDq8qLd10B3qxuBHBvV9V3PdLwv0h" target="_blank" rel="noopener noreferrer">Open Student Outputs Folder A</a>
+        <a class="output-link" href="https://drive.google.com/drive/folders/1j0YHWPbbKi33QtnapR3HKIMPKW-qy97D" target="_blank" rel="noopener noreferrer">Open Student Outputs Folder B</a>
+      </div>
+      <div class="output-card reveal reveal-delay-2">
+        <span class="output-count">04</span>
+        <span class="output-icon">🎗️</span>
+        <div class="output-title">Leadership & Service</div>
+        <div class="output-desc">Programs organized, events led, and community initiatives spearheaded as a student leader — building impact beyond the classroom through service and collaboration.</div>
+      </div>
+    </div>
+    <aside class="contact-card reveal reveal-delay-2" id="contact">
+      <div class="contact-label">Contact Module</div>
+      <div class="contact-title">Let’s connect</div>
+      <p class="contact-copy">For inquiries, collaborations, or portfolio-related communication, reach me directly through the details below.</p>
+      <div class="contact-item">
+        <span>Phone</span>
+        <a href="tel:09812454453">09812454453</a>
+      </div>
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jamesenciso2003@gmail.com&su=Portfolio%20Inquiry&body=Hello%20James%2C%0A%0AI%20would%20like%20to%20contact%20you%20regarding%20your%20portfolio.%0A%0ARegards%2C%0A" target="_blank" rel="noopener noreferrer" title="Compose in Gmail">jamesenciso2003@gmail.com</a>
+      </div>
+    </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-name">James L. Enciso</div>
+  <div class="footer-tagline">BTLED — Home Economics · Cebu Technological University</div>
+  <div class="footer-divider"></div>
+  <p style="font-family:'Fraunces',serif; font-style:italic; font-size:1.1rem; color:rgba(247,243,238,0.5); margin-bottom:1.5rem;">
+    "Empowering Learning Through Leadership, Innovation, and Service"
+  </p>
+  <div class="footer-credit">© 2025 James L. Enciso · E-Portfolio</div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Intersection Observer for reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate skill bars
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.classList.add('animated');
+        });
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Also observe skill fills directly
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.skill-fill').forEach(el => skillObserver.observe(el));
+
+  // Gallery Modal
+  function openGallery() {
+    const modal = document.getElementById('gallery-modal');
+    modal.style.display = 'block';
+    setTimeout(() => modal.classList.add('show'), 10);
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeGallery() {
+    const modal = document.getElementById('gallery-modal');
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 400);
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
